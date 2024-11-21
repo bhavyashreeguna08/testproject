@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: deployment
 spec:
-  replicas: 1  
+  replicas: 1
   selector:
     matchLabels:
       app: testproject
@@ -13,7 +13,7 @@ spec:
         app: testproject
     spec:
       containers:
-        - name: testproject
-          image: testproject
-          ports:
-            - containerPort: 8080
+      - name: testproject
+        image: "docker.io/bhavya762/testproject:latest"  
+        ports:
+        - containerPort: 8080
