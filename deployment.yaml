@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: testproject
-        image: bhavya762/testproject:latest  # Ensure this image is accessible in your container registry
-        imagePullPolicy: Always             # Ensures the latest image is pulled (optional)
-      restartPolicy: Never                  # Ensures the pod doesn't restart if it completes or fails
-  backoffLimit: 4                           # Retries 4 times in case of failure
+        image: bhavya762/testproject:latest  
+        imagePullPolicy: Always             
+      restartPolicy: Never                  
+  backoffLimit: 4                           
