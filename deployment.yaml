@@ -1,12 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: testproject
+  name: testproject-job  # Name reflects it's a Job, not a Deployment
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: testproject
   template:
     metadata:
       labels:
@@ -14,13 +10,7 @@ spec:
     spec:
       containers:
       - name: testproject
-        image: docker.io/bhavya762/testproject:latest
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "250m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
+        image: bhavya762/testproject:latest  # Ensure this image is accessible in your container registry
+        imagePullPolicy: Always             # Ensures the latest image is pulled (optional)
+      restartPolicy: Never                  # Ensures the pod doesn't restart if it completes or fails
+  backoffLimit: 4                           # Retries 4 times in case of failure
